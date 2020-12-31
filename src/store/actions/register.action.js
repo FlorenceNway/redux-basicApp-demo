@@ -13,3 +13,17 @@ export const deleteUser = (id) => {
         payload: id
     } 
 }
+
+export const moveUp = (id) => {
+    return {
+        type: 'MOVE_UP',
+        payload: id
+    } 
+}
+
+export const moveDown = (id) => {
+    return {
+        type: 'MOVE_DOWN',
+        payload: id
+    } 
+}
