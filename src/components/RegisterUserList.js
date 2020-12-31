@@ -1,29 +1,37 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteUser } from '../store/actions/register.action';
-
+import { deleteUser, moveUp, moveDown } from '../store/actions/register.action';
+import './RegisterUserList.css'
 
 const RegisterUserList = () => {
 
     const users = useSelector(({users}) => users)
-   const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const deleteHandler = (id) => {
         dispatch(deleteUser(id))
     }
 
+    const moveUpHandler = (id) => {
+        dispatch(moveUp(id))
+    }
+
+    const moveDownHandler = (id) => {
+        dispatch(moveDown(id))
+    }
+
     return (
         <ul>
-            {users.map(({id, username}) => {
-               // const isDisableDown = users.length -1 === index
+            {users.map(({id, username}, index) => {
+                const isDisableDown = users.length -1 === index
                return ( 
                 <li key={id}>
-                    {/* <input type='checkbox' onChange={()=>checkboxHandler(id)}/> */}
                     <span>{username}</span>
-                    <button onClick={() => deleteHandler(id)} >delete</button>
-                    {/* <button onClick={deleteHandler} data-id={todo.id}>delete</button>
-                    <button onClick={() => moveUpHandler(id)} disabled={!index}>up</button>
-                    <button onClick={() => moveDownHandler(id)} disabled={isDisableDown}>down</button> */}
+                    <div>
+                        <button onClick={() => deleteHandler(id)} >delete</button>
+                        <button onClick={() => moveUpHandler(id)} disabled={!index}>up</button>
+                        <button onClick={() => moveDownHandler(id)} disabled={isDisableDown}>down</button> 
+                    </div>
                 </li>)
             })
             }

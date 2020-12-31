@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch} from 'react-redux';
 import { addUser } from "../store/actions/register.action";
+import './RegisterUserInput.css'
 
 const RegisterUserInput = () => {
     const [inputValue,setInputValue] = useState('')
@@ -19,8 +20,7 @@ const RegisterUserInput = () => {
     
     return (
         <form onSubmit = {submitHandler}>
-            Username: 
-            <input type='text' onChange={handleChange} value={inputValue}/>
+            <input type='text' onChange={handleChange} value={inputValue} placeholder="Username..."/>
             <button>add</button>
         </form>
         
