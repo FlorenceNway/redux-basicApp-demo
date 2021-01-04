@@ -1,8 +1,14 @@
+body{
+    background: #5d5d5a;
+    color: white;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
     text-align: center;
 }
+
 
 li {
     display: flex;
@@ -21,7 +27,7 @@ span {
 
 ul li button {
     width: 80px;
-    background-color: #5cacce;
+    background-color: #ffcdab;
     border-radius: 5px;
     border: 0;
     padding: 5px;
@@ -29,10 +35,9 @@ ul li button {
     cursor: pointer;
 }
 
-li button:hover {
-    width: 100px;
-    font-size: large;
-    background: #df4a2a;
+li button:hover{
+    background: #ffcdab;
+    border: 1px solid #ffa45c;
 }
 
 li div {
