@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteUser, moveUp, moveDown } from '../store/actions/register.action';
-import './RegisterUserList.css'
+import './RegisterUserList.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 const RegisterUserList = () => {
 
@@ -21,21 +23,30 @@ const RegisterUserList = () => {
     }
 
     return (
-        <ul>
-            {users.map(({id, username}, index) => {
-                const isDisableDown = users.length -1 === index
-               return ( 
-                <li key={id}>
-                    <span>{username}</span>
-                    <div>
-                        <button onClick={() => deleteHandler(id)} >delete</button>
-                        <button onClick={() => moveUpHandler(id)} disabled={!index}>up</button>
-                        <button onClick={() => moveDownHandler(id)} disabled={isDisableDown}>down</button> 
-                    </div>
-                </li>)
-            })
-            }
-        </ul>
+        <div className='list-wrapper'>
+            <ul>
+                {users.map(({id, username}, index) => {
+                    const isDisableDown = users.length -1 === index
+                return ( 
+                    <li key={id}>
+                        <span>{username}</span>
+                        <div>
+                            <button onClick={() => deleteHandler(id)} >
+                                <FontAwesomeIcon icon={faTrashAlt} />
+                            </button>
+                            <button onClick={() => moveUpHandler(id)} disabled={!index}>
+                                <FontAwesomeIcon icon={faArrowUp} />
+                            </button>
+                            <button onClick={() => moveDownHandler(id)} disabled={isDisableDown}>
+                                <FontAwesomeIcon icon={faArrowDown} />
+                            </button> 
+                        </div>
+                    </li>)
+                })
+                }
+            </ul>
+        </div>
+
     )
 }
 
